@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2025 Shaan Sisodia
+Copyright (c) 2025 BlitzHash Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,17 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+DISCLAIMER:
+
+BlitzHash is NOT cryptographically secure and MUST NOT be used for:
+- Password hashing
+- Digital signatures
+- Cryptographic authentication
+- Security-critical applications
+- Any application where collision resistance or preimage resistance is required
+
+This is a performance demonstration project only. Use SHA-256, SHA-3, BLAKE2,
+or other cryptographically-analyzed hash functions for security applications.
