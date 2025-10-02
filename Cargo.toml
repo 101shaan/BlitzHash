@@ -1,0 +1,30 @@
+[package]
+name = "blitzhash"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[lib]
+name = "blitzhash"
+path = "src/lib.rs"
+
+[[bin]]
+name = "bench"
+path = "src/bin/bench.rs"
+
+[dependencies]
+rayon = "1.10"
+sha2 = "0.10"
+hex = "0.4"
+
+[dev-dependencies]
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = 'abort'
+strip = true
+
+[profile.bench]
+inherits = "release"
