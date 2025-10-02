@@ -1,0 +1,56 @@
+# Rust/Cargo
+/target/
+**/*.rs.bk
+*.pdb
+Cargo.lock
+
+# Benchmark outputs
+bench_results.csv
+*.csv.bak
+*.png
+*.svg
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Test files
+examples/*.bin
+test_data/
+
+# Build artifacts
+*.wasm
+*.js.map
+node_modules/
+dist/
+pkg/
+
+# Profiling
+perf.data
+perf.data.old
+*.prof
+massif.out.*
+callgrind.out.*
+
+# Documentation
+book/
+mdbook-target/
