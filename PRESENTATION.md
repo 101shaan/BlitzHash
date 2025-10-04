@@ -1,110 +1,115 @@
 # ⚡ BlitzHash: Exploring the Limits of Speed in Hashing
 
-### What’s a hash function?
-A hash function is like a **digital fingerprint machine**.  
-You give it any data — a file, a name, an image — and it instantly produces a unique fixed-size code called a *hash*.  
-If even one bit of the input changes, the fingerprint completely changes.
+---
 
-Hashes are used everywhere:
-- To check if two files are the same (deduplication)
-- To organize data quickly (databases, indexing)
-- To label versions of files (Git)
-- To detect corruption or tampering (checksums)
+## 🧩 What Problem Do Hashes Solve?
+
+Every digital system needs a quick way to **recognize data**.
+
+If you’ve ever:
+- Uploaded a file and your computer said “this file already exists,”  
+- Downloaded something and it verified “100% complete,”  
+- Used Google Drive or GitHub and it instantly spotted file changes —
+
+you’ve already used hashing.
+
+A **hash function** turns any piece of data — a photo, a document, a video — into a short, unique *digital fingerprint*.  
+If the data changes *at all*, the fingerprint completely changes.
+
+That means computers can:
+- Instantly tell if two files are identical  
+- Detect corruption or tampering  
+- Organize and index data efficiently  
+- Avoid storing duplicates  
+
+Hashes are the unsung backbone of how computers **keep track of data**.
 
 ---
 
 ## 🎯 The Challenge
 
-Most hash functions fall into two categories:
+There are two broad types of hash functions:
 
 | Type | Goal | Example | Speed |
 |------|------|----------|--------|
-| Cryptographic | Built for security | SHA-256, SHA-3 | ~0.8 GB/s |
-| Non-cryptographic | Built for speed | xxHash, MurmurHash, CityHash | 5–15 GB/s |
+| **Cryptographic** | Designed for *security* (resist tampering or forgery) | SHA-256, SHA-3 | ~0.8 GB/s |
+| **Non-cryptographic** | Designed for *speed* (handle huge data efficiently) | xxHash, MurmurHash, CityHash | 5–15 GB/s |
 
 **BlitzHash** belongs to the *second* category.
 
 The question I wanted to explore:
-> *How fast can we make a hash function go on modern hardware, without breaking its consistency or reliability?*
+> *How fast can we make a hash function on modern hardware while keeping it reliable and consistent?*
 
 ---
 
 ## 🚀 The Result
 
-BlitzHash pushes performance to the limit:
+BlitzHash pushes the limits of CPU performance:
 
 - **Language:** Rust (low-level control + memory safety)
-- **Output size:** 256 bits (same as SHA-256)
-- **Average throughput:** **~12.6 GB/s**
-- **Speedup:** **7.52× faster than SHA-256** on my test system
-- **Category:** Non-cryptographic hash (optimized for speed, not security)
+- **Output size:** 256 bits (same format as SHA-256)
+- **Throughput:** **17 GB/s**
+- **Speedup:** **7.52× faster than SHA-256**
+- **Category:** Non-cryptographic (optimized for speed, not encryption)
 
 ---
 
-## 🧠 The Engineering Behind It
+## 🧠 How It Works
 
-BlitzHash achieves its speed through:
-- **SIMD parallelism:** hashing multiple chunks at once  
-- **Cache-aware design:** keeping data in the CPU’s fastest memory  
+To reach that speed, BlitzHash uses:
+- **SIMD parallelism:** processing multiple chunks at once  
+- **Cache-aware design:** keeping hot data in CPU memory  
 - **Instruction-level parallelism:** overlapping operations efficiently  
-- **Branchless logic:** minimizing CPU stalls
+- **Branchless logic:** reducing CPU stalls  
 
-The result isn’t “less secure” — it’s *a different tool entirely*, designed for a different kind of problem.
-
----
-
-## 🧩 Why It Matters
-
-Most hashing in real systems *isn’t* about encryption.  
-It’s about speed, scale, and reliability in everyday computing tasks.
-
-| Real-world use | What matters | Example hash type |
-|----------------|--------------|-------------------|
-| Git commits | Consistency | SHA-1 |
-| Database indexing | Even distribution | MurmurHash |
-| File deduplication | Speed | xxHash |
-| Load balancing | Quick lookup | CityHash |
-| Bloom filters | Throughput | Non-crypto |
-
-BlitzHash fits right here — **for the 90% of use cases where cryptographic security isn’t required** but speed *directly* affects performance.
+The result isn’t “less secure” — it’s *a different tool entirely*, designed for a different job.
 
 ---
 
-## 🔍 In Simple Terms
+## 💡 Why It Matters
 
-Think of it like comparing:
-> A **bank vault lock** vs a **gym locker lock**.  
-> Both are locks — but you don’t need a vault to store your gym shoes.
+Most hashing in the real world isn’t about encryption — it’s about **keeping systems fast and organized**.
 
-BlitzHash is the gym locker: fast, efficient, and perfect for everyday, non-adversarial tasks.
+| Use case | Why hashing helps | Example |
+|-----------|-------------------|----------|
+| File deduplication | Instantly detect identical files | Google Drive, Dropbox |
+| Version control | Track file changes | Git |
+| Database indexing | Quickly find data | SQL/NoSQL systems |
+| Network routing | Balance traffic efficiently | Web servers |
+| Integrity checks | Detect corruption | File downloads, installers |
+
+BlitzHash is designed for exactly these kinds of **everyday high-performance systems** — where security isn’t the issue, but *speed and scale* are everything.
 
 ---
 
-## 💡 Key Takeaways
+## 🔐 The Analogy
 
-- **Category:** Non-cryptographic hashing (for performance applications)
-- **Speed:** 7.5× faster than SHA-256  
-- **Design:** Rust, CPU-optimized, 256-bit output  
-- **Goal:** Explore how far modern optimization can push hash performance  
-- **Use cases:** File checksums, deduplication, indexing, high-volume data processing
+Think of hashing like **locks**:
+- A **bank vault lock** (SHA-256) is secure but slow.
+- A **gym locker lock** (BlitzHash) is fast and easy.
+
+You don’t need a bank vault to store your gym shoes —  
+and you don’t need cryptographic security to check if two files are the same.
 
 ---
 
 ## 🗣️ If Someone Asks “Why Not Just Use SHA-256?”
 
-> “Because SHA-256 solves a different problem. It’s built for security — to resist hackers and digital forgery — but that security makes it slower.
+> “Because SHA-256 is for security — stopping hackers, forging signatures, protecting passwords.
 >
-> In most systems, the data isn’t under attack. What matters is how quickly we can detect changes, identify duplicates, or sort massive datasets.  
+> But in most real systems, data isn’t under attack. What matters is **speed** — how fast can we process and identify massive amounts of information.
 >
-> BlitzHash explores that performance frontier — similar to how Google built CityHash and Facebook built xxHash for their own systems.”
+> BlitzHash explores that performance frontier, similar to how Google built CityHash and Facebook built xxHash for their systems.”
 
 ---
 
 ## 🧾 Summary
 
-**BlitzHash** is a **performance engineering experiment** — a deep dive into how fast we can make a hash function go on modern CPUs while staying reliable and consistent.  
-It’s not about cryptography — it’s about *computational efficiency*, *hardware-aware design*, and *algorithmic optimization.*
+**BlitzHash** is a **performance engineering project** exploring how fast a modern CPU can hash data while staying consistent and reliable.
+
+It’s not about cryptography —  
+it’s about **data efficiency, optimization, and raw speed**.
 
 ---
 
-*(Live demo and benchmark results available on laptop.)*
+*(Live demo and benchmarks available on laptop.)*
