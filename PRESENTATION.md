@@ -1,8 +1,8 @@
-# ⚡ BlitzHash: Exploring the Limits of Speed in Hashing
+# BlitzHash: Exploring the Limits of Speed in Hashing
 
 ---
 
-## 🧩 What Problem Do Hashes Solve?
+## What Problem Do Hashes Solve?
 
 Every digital system needs a quick way to **recognize data**.
 
@@ -26,7 +26,7 @@ Hashes are the unsung backbone of how computers **keep track of data**.
 
 ---
 
-## 🎯 The Challenge
+## The Challenge
 
 There are two broad types of hash functions:
 
@@ -42,7 +42,7 @@ The question I wanted to explore:
 
 ---
 
-## 🚀 The Result
+## The Result
 
 BlitzHash pushes the limits of CPU performance:
 
@@ -54,7 +54,7 @@ BlitzHash pushes the limits of CPU performance:
 
 ---
 
-## 🧠 How It Works
+## How It Works
 
 To reach that speed, BlitzHash uses:
 - **SIMD parallelism:** processing multiple chunks at once  
@@ -66,7 +66,7 @@ The result isn’t “less secure” — it’s *a different tool entirely*, des
 
 ---
 
-## 💡 Why It Matters
+## Why It Matters
 
 Most hashing in the real world isn’t about encryption — it’s about **keeping systems fast and organized**.
 
@@ -82,34 +82,21 @@ BlitzHash is designed for exactly these kinds of **everyday high-performance sys
 
 ---
 
-## 🔐 The Analogy
+## The Analogy
 
 Think of hashing like **locks**:
 - A **bank vault lock** (SHA-256) is secure but slow.
-- A **gym locker lock** (BlitzHash) is fast and easy.
+- A ** locker lock** (BlitzHash) is fast and easy.
 
 You don’t need a bank vault to store your gym shoes —  
 and you don’t need cryptographic security to check if two files are the same.
 
 ---
 
-## 🗣️ If Someone Asks “Why Not Just Use SHA-256?”
+## If Someone Asks “Why Not Just Use SHA-256?”
 
 > “Because SHA-256 is for security — stopping hackers, forging signatures, protecting passwords.
 >
-> But in most real systems, data isn’t under attack. What matters is **speed** — how fast can we process and identify massive amounts of information.
+> But in most real systems, data isn’t under attack. What matters is how fast can we process and identify massive amounts of information.
 >
 > BlitzHash explores that performance frontier, similar to how Google built CityHash and Facebook built xxHash for their systems.”
-
----
-
-## 🧾 Summary
-
-**BlitzHash** is a **performance engineering project** exploring how fast a modern CPU can hash data while staying consistent and reliable.
-
-It’s not about cryptography —  
-it’s about **data efficiency, optimization, and raw speed**.
-
----
-
-*(Live demo and benchmarks available on laptop.)*
